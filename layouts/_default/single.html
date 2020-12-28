@@ -1,0 +1,23 @@
+
+{{ define "body" }}
+{{- $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
+{{ $tocEmpty := (eq .TableOfContents `<nav id="TableOfContents"></nav>`)}}
+{{ $enableTOC :=and  $enableTOC (not $tocEmpty)}}
+{{- $.Scratch.Set "$tocEmpty" $tocEmpty -}}
+{{- $.Scratch.Set "$enableTOC" $enableTOC -}}
+{{ if $enableTOC }}
+<body data-bs-spy="scroll" data-bs-target="#tocnav" data-bs-offset="70">
+{{ else}}
+<body>
+{{ end }}
+
+
+{{ end }}
+
+{{ define "main" }}
+    {{ if .Site.Params.tocAside }}
+        {{ partial "pages/post-toc-aside.html" . }}
+    {{ else }}
+        {{ partial "pages/post.html" . }}
+    {{ end }}
+{{ end }}

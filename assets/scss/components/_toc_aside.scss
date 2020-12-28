@@ -1,0 +1,23 @@
+.main-inner{
+    display: flex;
+    flex-direction: column;
+}
+.content-container{
+    display: flex;
+    flex-direction: row;
+}
+article{
+  flex-grow: 1;
+}
+#tocnav{
+    position: sticky;
+    top: 10em;
+    width: 10em;
+    padding-left: 20px;
+}
+.nav-item .active {
+    border-left: 0.25em solid green;
+}
+.nav-link{
+    padding-left: 0.5em;
+}
